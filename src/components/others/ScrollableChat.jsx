@@ -1,8 +1,8 @@
 import React from 'react'
 import ScrollableFeed from "react-scrollable-feed"
 import { ChatState } from '../../context/ChatContext'
-import { Avatar, Box, IconButton, Menu, MenuButton, MenuItem, MenuList, Tooltip } from '@chakra-ui/react'
-import {capitalizeSentences,  copyToClipboard,  formatTime,  isLastMessage, isSameSender, isSameSenderMargin, isSameUser } from '../chatLogics/logics'
+import { Avatar, Box, IconButton, Menu, MenuButton, MenuItem, MenuList, Tooltip, useToast } from '@chakra-ui/react'
+import { capitalizeSentences, copyToClipboard, formatTime, isLastMessage, isSameSender, isSameSenderMargin, isSameUser } from '../chatLogics/logics'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import axios from 'axios'
 
@@ -10,8 +10,10 @@ const ScrollableChat = ({ messages, fetchMessages }) => {
 
     const { user } = ChatState()
 
+    const toast = useToast()
 
-      const deleteMessage = async (id) => {
+
+    const deleteMessage = async (id) => {
         try {
             const config = {
                 headers: {
@@ -23,8 +25,8 @@ const ScrollableChat = ({ messages, fetchMessages }) => {
         } catch (error) {
             console.log(error)
         }
-      }
-    
+    }
+
 
     return (
         <ScrollableFeed>
@@ -68,9 +70,19 @@ const ScrollableChat = ({ messages, fetchMessages }) => {
                                 {capitalizeSentences(m?.content)}
                             </span>
                             <Menu style>
-                                <MenuButton as={IconButton} icon={<ChevronDownIcon color={'darkgray'}/>} variant="filled" fontSize={'20px'} minWidth={0} height={"18px"} marginLeft={'25px'} />
+                                <MenuButton as={IconButton} icon={<ChevronDownIcon color={'darkgray'} />} variant="filled" fontSize={'20px'} minWidth={0} height={"18px"} marginLeft={'25px'} />
                                 <MenuList minWidth={'0px'}>
-                                    <MenuItem onClick={() => copyToClipboard(m?._id, m?.content)}>Copy</MenuItem>
+                                    <MenuItem onClick={() => {
+                                        copyToClipboard(m?._id, m?.content)
+                                        toast({
+                                            title: "Text copied to clipboard!",
+                                            status: 'success',
+                                            position: 'bottom',
+                                            isClosable: true,
+                                            duration: 1000
+                                        })
+                                    }}
+                                    >Copy</MenuItem>
                                     <MenuItem onClick={() => deleteMessage(m?._id)}>Delete</MenuItem>
 
                                 </MenuList>

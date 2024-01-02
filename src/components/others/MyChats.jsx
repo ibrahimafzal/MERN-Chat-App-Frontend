@@ -28,7 +28,7 @@ const MyChats = ({ fetchAgain }) => {
           "Authorization": `Bearer ${user?.data?.token}`
         }
       }
-      const { data } = await axios.get("http://localhost:5000/chat/", config)
+      const { data } = await axios.get("https://mern-chat-app-backend-iota.vercel.app/http://localhost:5000/chat/", config)
       setChats(data)
     } catch (error) {
       console.log(error)
