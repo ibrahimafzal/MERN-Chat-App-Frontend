@@ -41,7 +41,7 @@ const Login = () => {
           "Content-type": "application/json"
         }
       }
-      const response = await axios.post("http://localhost:5000/user/login", data, config)
+      const response = await axios.post("https://mern-chat-app-backend-xi.vercel.app/user/login", data, config)
       setLoading(false)
       toast({
         title: "Login Successfully!",
