@@ -28,7 +28,7 @@ const MyChats = ({ fetchAgain }) => {
           "Authorization": `Bearer ${user?.data?.token}`
         }
       }
-      const { data } = await axios.get("https://mern-chat-app-backend-iota.vercel.app/chat/", config)
+      const { data } = await axios.get("https://mern-chat-app-backend-xi.vercel.app/chat/", config)
       setChats(data)
     } catch (error) {
       console.log(error)
@@ -50,7 +50,7 @@ const MyChats = ({ fetchAgain }) => {
           "Authorization": `Bearer ${user?.data?.token}`
         }
       }
-      await axios.delete(`http://localhost:5000/chat/deleteChat/${chatId}`, config)
+      await axios.delete(`https://mern-chat-app-backend-xi.vercel.app/chat/deleteChat/${chatId}`, config)
       setSelectedChat([])
     } catch (error) {
       toast({

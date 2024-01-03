@@ -30,7 +30,7 @@ const GroupChatModal = ({ children }) => {
                 }
             }
 
-            const { data } = await axios.get(`http://localhost:5000/user/all-users?search=${search}`, config)
+            const { data } = await axios.get(`https://mern-chat-app-backend-xi.vercel.app/user/all-users?search=${search}`, config)
             setLoading(false)
             setSearchResults(data)
         } catch (error) {
@@ -78,7 +78,7 @@ const GroupChatModal = ({ children }) => {
                 }
             }
 
-            const { data } = await axios.post("http://localhost:5000/chat/createGroup", {
+            const { data } = await axios.post("https://mern-chat-app-backend-xi.vercel.app/chat/createGroup", {
                 name: groupChatName,
                 users: JSON.stringify(selectedUsers.map((u) => u._id))
             }, config)

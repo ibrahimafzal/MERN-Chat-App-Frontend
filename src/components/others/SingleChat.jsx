@@ -52,7 +52,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             }
 
             setLoading(true)
-            const { data } = await axios.get(`http://localhost:5000/message/${selectedChat?._id}`, config)
+            const { data } = await axios.get(`https://mern-chat-app-backend-xi.vercel.app/message/${selectedChat?._id}`, config)
             setMessages(data)
             setLoading(false)
             socket.emit("join chat", selectedChat?._id)
@@ -116,7 +116,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 }
 
                 setNewMessage("")
-                const { data } = await axios.post("http://localhost:5000/message", {
+                const { data } = await axios.post("https://mern-chat-app-backend-xi.vercel.app/message", {
                     content: newMessage,
                     chatId: selectedChat?._id
                 }, config)
@@ -147,7 +147,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             }
 
             setNewMessage("")
-            const { data } = await axios.post("http://localhost:5000/message", {
+            const { data } = await axios.post("https://mern-chat-app-backend-xi.vercel.app/message", {
                 content: newMessage,
                 chatId: selectedChat?._id
             }, config)

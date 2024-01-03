@@ -86,7 +86,7 @@ const SignUp = () => {
                 }
             }
 
-            const response = await axios.post("http://localhost:5000/user/register", data, config)
+            const response = await axios.post("https://mern-chat-app-backend-xi.vercel.app/user/register", data, config)
             toast({
                 title: "Registeration Successfully!",
                 status: 'success',

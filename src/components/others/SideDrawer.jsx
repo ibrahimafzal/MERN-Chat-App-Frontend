@@ -43,7 +43,7 @@ const SideDrawer = () => {
                 }
             }
 
-            const { data } = await axios.get(`http://localhost:5000/user/all-users?search=${search}`, config)
+            const { data } = await axios.get(`https://mern-chat-app-backend-xi.vercel.app/user/all-users?search=${search}`, config)
             setLoading(false)
             setSearchResults(data)
         } catch (error) {
@@ -67,7 +67,7 @@ const SideDrawer = () => {
                     Authorization: `Bearer ${user?.data?.token}`
                 }
             }
-            const { data } = await axios.post('http://localhost:5000/chat/', { userId }, config)
+            const { data } = await axios.post('https://mern-chat-app-backend-xi.vercel.app/chat/', { userId }, config)
 
             if (!chats.find((c) => c._id === data?._id)) setChats([data, ...chats])
 

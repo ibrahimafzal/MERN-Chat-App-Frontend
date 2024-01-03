@@ -39,7 +39,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 }
             }
 
-            const { data } = await axios.put("http://localhost:5000/chat/groupExit", {
+            const { data } = await axios.put("https://mern-chat-app-backend-xi.vercel.app/chat/groupExit", {
                 chatId: selectedChat?._id,
                 userId: user1?._id
             }, config)
@@ -93,7 +93,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 }
             }
 
-            const { data } = await axios.put("http://localhost:5000/chat/addToGroup", {
+            const { data } = await axios.put("https://mern-chat-app-backend-xi.vercel.app/chat/addToGroup", {
                 chatId: selectedChat?._id,
                 userId: user1?._id
             }, config)
@@ -125,7 +125,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 }
             }
 
-            const { data } = await axios.put("http://localhost:5000/chat/rename", {
+            const { data } = await axios.put("https://mern-chat-app-backend-xi.vercel.app/chat/rename", {
                 chatId: selectedChat?._id,
                 chatName: groupChatName
             }, config)
@@ -161,7 +161,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 }
             }
 
-            const { data } = await axios.get(`http://localhost:5000/user/all-users?search=${search}`, config)
+            const { data } = await axios.get(`https://mern-chat-app-backend-xi.vercel.app/user/all-users?search=${search}`, config)
             setLoading(false)
             setSearchResults(data)
         } catch (error) {

@@ -20,7 +20,7 @@ const ScrollableChat = ({ messages, fetchMessages }) => {
                     'Authorization': `Bearer ${user?.data?.token}`
                 }
             }
-            await axios.delete(`http://localhost:5000/message/deleteMessage/${id}`, config)
+            await axios.delete(`https://mern-chat-app-backend-xi.vercel.app/message/deleteMessage/${id}`, config)
             fetchMessages()
         } catch (error) {
             console.log(error)
