@@ -32,7 +32,10 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     const toast = useToast()
 
     useEffect(() => {
-        socket = io(ENDPOINT)
+        socket = io(ENDPOINT, {
+            transports: ['websocket'],
+            reconnection: true,
+        })
         socket.emit("setup", user?.data)
         socket.on("connected", () => setSocketConnected(true))
         socket.on("typing", () => setIsTyping(true))
@@ -248,7 +251,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                 ) : (
                                     <>
                                         <Box textTransform={'capitalize'} display={'flex'} alignItems={"center"}>
-                                        <IconButton
+                                            <IconButton
                                                 display={{ base: 'flex', md: 'none' }}
                                                 bg={'none'}
                                                 color={'white'}
@@ -269,7 +272,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                                         <span style={{ fontSize: "10px", display: "flex" }}>typing...</span>
                                                     </span>
                                                 ) : (<></>)
-                                            }
+                                                }
                                             </div>
                                         </Box>
                                         <UpdateGroupChatModal
