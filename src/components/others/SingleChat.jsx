@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ChatState } from '../../context/ChatContext'
-import { Avatar, Box, FormControl, IconButton, Input, InputGroup, Spinner, Text, useToast } from '@chakra-ui/react'
+import { Avatar, Box, FormControl, IconButton, Input, InputGroup, Spinner, useToast } from '@chakra-ui/react'
 import WelcomePage from './WelcomePage'
 import { ArrowBackIcon, ArrowRightIcon } from "@chakra-ui/icons"
 import ProfileModal from "./ProfileModal"
@@ -32,7 +32,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     const toast = useToast()
 
     useEffect(() => {
-        socket = io(ENDPOINT)
+        socket = io()
         socket.emit("setup", user?.data)
         socket.on("connected", () => setSocketConnected(true))
         socket.on("typing", () => setIsTyping(true))
