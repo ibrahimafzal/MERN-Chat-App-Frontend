@@ -99,6 +99,3 @@ const ScrollableChat = ({ messages, fetchMessages }) => {
 }
 
 export default ScrollableChat
-
-
-// dele message, show notification on avatar. show lastseen and online. deploy
