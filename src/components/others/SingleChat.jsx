@@ -32,10 +32,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     const toast = useToast()
 
     useEffect(() => {
-        socket = io(ENDPOINT, {
-            transports: ['websocket'],
-            reconnection: true,
-        })
+        socket = io(ENDPOINT)
         socket.emit("setup", user?.data)
         socket.on("connected", () => setSocketConnected(true))
         socket.on("typing", () => setIsTyping(true))
