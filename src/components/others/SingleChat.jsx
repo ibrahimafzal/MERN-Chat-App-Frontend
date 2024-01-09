@@ -14,7 +14,7 @@ import io from "socket.io-client"
 import notificationSound from "../../images/iphone_messages.mp3"
 
 
-const ENDPOINT = "https://mern-chat-app-backend-xi.vercel.app"
+const ENDPOINT = "http://localhost:5000"
 var socket, selectedChatCompare
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
